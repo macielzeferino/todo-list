@@ -23,6 +23,22 @@ function handleSubmit(e) {
   setNewItem("")
 }
 
+function toggleTodo(id, completed) {
+  setTodos(currentTodos => {
+    return currentTodos.map(todo =>{
+      if(todo.id === id) {
+        return {...todo, completed}
+      }
+    return todo
+    })
+  })
+}
+
+function deleteTodo(id) {
+  setTodos(currentTodos => {
+    return currentTodos.filte(todo => todo.id !== id)
+  })
+}
 
  return (
     <>
@@ -43,10 +59,14 @@ function handleSubmit(e) {
          return ( 
          <li key={todo.id}>
             <label htmlFor="">
-                <input type="checkbox" checked={todo.completed}/>
+                <input 
+                type="checkbox" 
+                checked={todo.completed}
+                onChange={e => toggleTodo(todo.id, e.target.checked)}
+              />
                 {todo.title}
             </label>
-            <button className="btn bg-red-800">Deletar</button>
+            <button onClick={() => deleteTodo()} className="btn bg-red-800">Deletar</button>
           </li>
         )
         })}
