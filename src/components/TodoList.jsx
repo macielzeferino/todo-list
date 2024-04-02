@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import TodoItem from "./TodoItem"
 
 export default function TodoList({ todos, toggleTodo, deleteTodo }) {

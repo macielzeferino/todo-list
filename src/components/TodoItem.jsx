@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 export default function TodoItem({completed, id, title, toggleTodo, deleteTodo}) {
   return (
     <li>

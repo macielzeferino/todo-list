@@ -1,8 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
-`
-q
-`
-export default function NewTodoForm(onSubmit) {
+
+export default function NewTodoForm({onSubmit}) {
   const [newItem, setNewItem] = useState("")
 
 
@@ -10,12 +9,13 @@ export default function NewTodoForm(onSubmit) {
     e.preventDefault()
     if(newItem === "") return 
     onSubmit(newItem)
+    
     setNewItem("")
   }
 
 
   return (
-    <form onSubmit={handleSubmit} className='new-item-form'>
+    <form onSubmit={(e)=>handleSubmit(e)} className='new-item-form'>
       <div className="form-row">
         <label htmlFor="item">New Item</label>
         <input value={newItem}
